@@ -3,52 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>電通大生専用マッチングアプリ</title>
+    <title>UUID 専用マッチングアプリ</title>
 
     <meta
       name="description"
-      content="電通大生による、電通大生のためのマッチングアプリ"
+      content="UUID による、UUID のためのマッチングアプリ"
     />
 
-    <meta property="og:title" content="電通大生専用マッチングアプリ" />
+    <meta property="og:title" content="UUID 専用マッチングアプリ" />
     <meta
       property="og:description"
-      content="電通大生による、電通大生のためのマッチングアプリ"
+      content="UUID による、UUID のためのマッチングアプリ"
     />
     <meta
       property="og:url"
-      content="https://uec-matching.mimifuwacc.workers.dev/"
+      content="https://uuid.rabbitflap.com/"
     />
     <meta
       property="og:image"
-      content="https://uec-matching.mimifuwacc.workers.dev/og.png"
+      content="https://uuid.rabbitflap.com/og.png"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="電通大生専用マッチングアプリ" />
+    <meta property="og:site_name" content="UUID 専用マッチングアプリ" />
 
-    <meta name="twitter:title" content="電通大生専用マッチングアプリ" />
+    <meta name="twitter:title" content="UUID 専用マッチングアプリ" />
     <meta
       name="twitter:description"
-      content="電通大生による、電通大生のためのマッチングアプリ"
+      content="UUID による、UUID のためのマッチングアプリ"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:image"
-      content="https://uec-matching.mimifuwacc.workers.dev/og.png"
+      content="https://uuid.rabbitflap.com/og.png"
     />
   </head>
   <body>
     <header>
-      <h1>電通大生専用マッチングアプリ</h1>
+      <h1>UUID 専用マッチングアプリ</h1>
     </header>
     <main>
       <section id="question">
-        <p>あなたは電通大生ですか？</p>
+        <p>あなたは UUID ですか？</p>
         <button id="yes">はい</button>
         <button id="no">いいえ</button>
       </section>
       <section id="retry" style="display: none">
-        <button id="retry">再マッチング</button>
+        <button id="rematch">再マッチング</button>
         <button id="restart">最初からやり直す</button>
       </section>
       <section id="result" style="display: none">
@@ -60,16 +60,15 @@
 
     <footer>
       <p>
-        inspired by
-        <a href="https://hutinoatari.github.io/cheapTransfer/">最安経路検索</a>
+        forked from
+        <a href="https://uec-matching.mimifuwacc.workers.dev/">電通大生専用マッチングアプリ</a>
+        &nbsp;(<a href="https://github.com/mimifuwacc/uec-matching/">mimifuwacc/uec-matching</a>)
       </p>
 
       <p>
-        ©
-        <script>
-          document.write(new Date().getFullYear());
-        </script>
-        mimifuwacc
+        © 2026 mimifuwacc (original)
+        <br>
+        © 2026 Rabbit Flap (fork)
       </p>
     </footer>
 
@@ -79,7 +78,7 @@
       const noButton = questionSection.querySelector("#no");
 
       const retrySection = document.querySelector("#retry");
-      const retryButton = retrySection.querySelector("#retry");
+      const retryButton = retrySection.querySelector("#rematch");
       const restartButton = retrySection.querySelector("#restart");
 
       const resultSection = document.querySelector("#result");
@@ -91,21 +90,13 @@
         console.log(resultSection);
         resultText.textContent = "マッチング中";
 
-        await new Promise((resolve) => {
-          for (let i = 0; i < 5; i++) {
-            setTimeout(
-              () => {
-                resultText.textContent += ".";
-                if (i === 4) resolve();
-              },
-              (i + 1) * 500,
-            );
-          }
-        });
+        await new Promise((resolve) => setTimeout(resolve, 2000);
 
         retrySection.style.display = "block";
 
-        resultText.textContent = "あなたにマッチする人は見つかりませんでした";
+        const uuid = crypto.randomUUID()
+
+        resultText.innerHTML = `あなたに合う UUID は<code style="font-size: 14px; font-weight: 700; background-color: whitesmoke; padding: 4px; margin: 0 2px;">${uuid}</code>です`;
       };
 
       yesButton.addEventListener("click", async () => {
@@ -120,7 +111,7 @@
         restartButton.style.display = "inline-block";
 
         resultSection.style.display = "block";
-        resultText.textContent = "電通大生以外は利用することができません";
+        resultText.textContent = "UUID 以外は利用することができません";
       });
 
       retryButton.addEventListener("click", async () => {

@@ -1,3 +1,1 @@
-# HOW TO CONTRIBUTE
-
-ご自由に PR などどうぞ．
+This project is forked from mimifuwacc/uec-matching

@@ -1,5 +1,6 @@
-# UEC-matching
+# UUID-matching
 
-電通大生による、電通大生のためのマッチングアプリ
+UUID による、電通大生のためのマッチングアプリ
 
-https://uec-matching.mimifuwacc.workers.dev/
+https://uuid.rabbitflap.com/
+
